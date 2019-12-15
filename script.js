@@ -1,4 +1,3 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 var clipBtn = document.querySelector("#clipboard");
 var numChar;
@@ -20,14 +19,14 @@ writePassword();
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
-    var copyBtn = document.querySelector("#generate");
+    var generateBtn = document.querySelector("#generate");
 
-    copyBtn.addEventListener("click", function () {
+    generateBtn.addEventListener("click", function () {
         passwordText.value = password;
     });
 
-    // copyBtn.removeAttribute("disabled");
-    // copyBtn.focus();
+    var clipBtn = document.querySelector("#clipboard")
+    clipBtn.addEventListener("click", copyToClipboard);
 }
 
 
@@ -53,7 +52,7 @@ function createAllCharArray() {
     if (upperCase) {
         temp = allChar.concat(arrUpperCase);
         allChar = temp;
-        console.log(allChar);
+        //console.log(allChar);
     }
     if (lowerCase) {
         temp = allChar.concat(arrLowerCase);
@@ -84,16 +83,8 @@ function getInput() {
     specialChar = confirm("Please confirm if you want SPECIAL characters in your password!");
 }
 
-
-
-    // Write password to the #password input
-
-
-//     function copyToClipboard() {
-//         // BONUS 
-//     }
-
-//     // Add event listener to generate button
-//     generateBtn.addEventListener("click", writePassword);
-
-// // BONUS EVENT LISTENER
+function copyToClipboard() {
+    var copyText = document.querySelector("#password");
+    copyText.select();
+    document.execCommand("copy");
+}
