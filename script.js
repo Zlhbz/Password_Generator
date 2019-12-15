@@ -22,7 +22,9 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
     var copyBtn = document.querySelector("#generate");
 
-    passwordText.value = password;
+    copyBtn.addEventListener("click", function () {
+        passwordText.value = password;
+    });
 
     // copyBtn.removeAttribute("disabled");
     // copyBtn.focus();
@@ -45,7 +47,7 @@ function createAllCharArray() {
     var temp = [];
 
     while (!upperCase && !lowerCase && !numeric && !specialChar) {
-        alert("Please pick at least one of the four options!!")
+        alert("Please pick at least one of the four options!")
         getInput();
     }
     if (upperCase) {
@@ -70,16 +72,16 @@ function createAllCharArray() {
 
 
 function getInput() {
-    numChar = parseInt(prompt("How many characters do you want your password be?"));
+    numChar = parseInt(prompt("Please enter the length of the password!! It should be 8-128 characters!"));
 
     while (numChar < 8 || numChar > 128) {
-        alert(" Plese enter right number!!!")
+        alert("Please enter again! It should be 8-128 characters!!")
         numChar = parseInt(prompt("How many characters do you want your password be?"));
     }
-    lowerCase = confirm("Do you want lowercase characters to be included in your password?");
-    upperCase = confirm("Do you want uppercase characters to be included in your password?");
-    numeric = confirm("Do you want numeric characters to be included in your password");
-    specialChar = confirm("Do you want special characters to be included in your password");
+    lowerCase = confirm("Please confirm if you want LOWER case characters in your password!");
+    upperCase = confirm("Please confirm if you want UPPER case characters in your password!");
+    numeric = confirm("Please confirm if you want NUMERIC characters in your password!");
+    specialChar = confirm("Please confirm if you want SPECIAL characters in your password!");
 }
 
 
